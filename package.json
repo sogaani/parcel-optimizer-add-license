@@ -1,0 +1,27 @@
+{
+  "name": "parcel-optimizer-add-license",
+  "version": "0.1.0",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sogaani/parcel-optimizer-add-license.git"
+  },
+  "main": "src/LicenseOptimizer.js",
+  "source": "src/LicenseOptimizer.js",
+  "engines": {
+    "parcel": "^2.0.0-beta.1"
+  },
+  "author": "sogaani <soga.ani@gmail.com>",
+  "dependencies": {
+    "@parcel/plugin": "^2.0.0-beta.1",
+    "@parcel/utils": "^2.0.0-alpha.3"
+  },
+  "description": "",
+  "bugs": {
+    "url": "https://github.com/sogaani/parcel-optimizer-add-license/issues"
+  },
+  "homepage": "https://github.com/sogaani/parcel-optimizer-add-license#readme"
+}
