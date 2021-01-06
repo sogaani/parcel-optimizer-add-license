@@ -1,6 +1,6 @@
 {
   "name": "parcel-optimizer-add-license",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -17,6 +17,7 @@
   "author": "sogaani <soga.ani@gmail.com>",
   "dependencies": {
     "@parcel/plugin": "^2.0.0-beta.1",
+    "@parcel/source-map": "^2.0.0-alpha.4.20",
     "@parcel/utils": "^2.0.0-alpha.3"
   },
   "description": "",

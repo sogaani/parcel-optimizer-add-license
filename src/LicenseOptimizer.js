@@ -1,12 +1,8 @@
 const { Optimizer } = require('@parcel/plugin');
 const {
   countLines,
-  PromiseQueue,
-  relativeBundlePath,
-  replaceInlineReferences,
-  md5FromString,
-  loadConfig,
 } = require('@parcel/utils');
+const SourceMap = require('@parcel/source-map').default;
 const getLicense = require('./getLicense');
 
 function createLicenseHeader(package) {
@@ -36,9 +32,7 @@ module.exports = new Optimizer({
     bundle,
     contents,
     map,
-    options,
-    logger,
-    getSourceMapReference
+    options
   }) {
     const packages = {};
     bundle.traverse(node => {
@@ -53,6 +47,13 @@ module.exports = new Optimizer({
       }
     });
     const header = createHeader(packages);
-    return { contents: header + contents, map };
+    const newMap = new SourceMap(options.projectRoot);
+    if (options.sourceMaps) {
+      const mapBuffer = map.toBuffer();
+      const lineOffset = countLines(header) - 1;
+      newMap.addBufferMappings(mapBuffer, lineOffset);
+    }
+    
+    return { contents: header + contents, map: newMap };
   },
 });
