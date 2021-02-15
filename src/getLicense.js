@@ -24,10 +24,14 @@ module.exports = function (assetPath, projectRoot) {
     }
     const dirFiles = fs.readdirSync(traversePath);
     const foundLicenseFile = dirFiles.find((filename) => isLicenseFile(filename));
-    if(foundLicenseFile) {  
-      const package = require(path.join(traversePath, 'package.json'));
-      license = fs.readFileSync(path.join(traversePath, foundLicenseFile), { encoding: 'utf8' });
-      return { license, package };
+    if(foundLicenseFile) {
+      try{
+        const package = require(path.join(traversePath, 'package.json'));
+        license = fs.readFileSync(path.join(traversePath, foundLicenseFile), { encoding: 'utf8' });
+        return { license, package };
+      } catch (e) {
+        // should I output error message?
+      }
     }
   }
   return;
